@@ -7,15 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E127B63C17D9E25E004559EC /* DIRDataViewControllerForHuman.m in Sources */ = {isa = PBXBuildFile; fileRef = E127B63B17D9E25E004559EC /* DIRDataViewControllerForHuman.m */; };
+		E127B63F17D9E285004559EC /* DIRDataViewControllerForHuman.xib in Resources */ = {isa = PBXBuildFile; fileRef = E127B63E17D9E285004559EC /* DIRDataViewControllerForHuman.xib */; };
+		E127B64217D9E2DB004559EC /* DIRDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E127B64117D9E2DB004559EC /* DIRDataViewController.m */; };
+		E13A111717D786CE0056DD33 /* DIRDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E13A111617D786CE0056DD33 /* DIRDataHelper.m */; };
+		E14E31C817DA26E000747C75 /* DIRDataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E14E31C717DA26E000747C75 /* DIRDataViewController.xib */; };
 		E189AEA417D647A6002C1B00 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E189AEA317D647A6002C1B00 /* Cocoa.framework */; };
 		E189AEAE17D647A6002C1B00 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E189AEAC17D647A6002C1B00 /* InfoPlist.strings */; };
 		E189AEB017D647A6002C1B00 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E189AEAF17D647A6002C1B00 /* main.m */; };
 		E189AEB417D647A6002C1B00 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = E189AEB217D647A6002C1B00 /* Credits.rtf */; };
 		E189AEB717D647A6002C1B00 /* DIRAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E189AEB617D647A6002C1B00 /* DIRAppDelegate.m */; };
 		E189AEBA17D647A6002C1B00 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = E189AEB817D647A6002C1B00 /* MainMenu.xib */; };
+		E189AEC117D647BA002C1B00 /* OpenDirectory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E189AEC017D647BA002C1B00 /* OpenDirectory.framework */; };
+		E189AEC417D64F4B002C1B00 /* DIRDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = E189AEC317D64F4B002C1B00 /* DIRDataProvider.m */; };
+		E1B0536D17D77162006B2F77 /* DIRQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B0536C17D77162006B2F77 /* DIRQuery.m */; };
+		E1EAEEB517DF0BF9006BE504 /* ODRecord+SmartDisplayName.m in Sources */ = {isa = PBXBuildFile; fileRef = E1EAEEB417DF0BF9006BE504 /* ODRecord+SmartDisplayName.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E127B63A17D9E25E004559EC /* DIRDataViewControllerForHuman.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DIRDataViewControllerForHuman.h; sourceTree = "<group>"; };
+		E127B63B17D9E25E004559EC /* DIRDataViewControllerForHuman.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DIRDataViewControllerForHuman.m; sourceTree = "<group>"; };
+		E127B63E17D9E285004559EC /* DIRDataViewControllerForHuman.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DIRDataViewControllerForHuman.xib; sourceTree = "<group>"; };
+		E127B64017D9E2DB004559EC /* DIRDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DIRDataViewController.h; sourceTree = "<group>"; };
+		E127B64117D9E2DB004559EC /* DIRDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DIRDataViewController.m; sourceTree = "<group>"; };
+		E13A111517D786CE0056DD33 /* DIRDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DIRDataHelper.h; sourceTree = "<group>"; };
+		E13A111617D786CE0056DD33 /* DIRDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DIRDataHelper.m; sourceTree = "<group>"; };
+		E14E31C717DA26E000747C75 /* DIRDataViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DIRDataViewController.xib; sourceTree = "<group>"; };
 		E189AEA017D647A6002C1B00 /* Directory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Directory.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E189AEA317D647A6002C1B00 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		E189AEA617D647A6002C1B00 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -29,6 +46,13 @@
 		E189AEB517D647A6002C1B00 /* DIRAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DIRAppDelegate.h; sourceTree = "<group>"; };
 		E189AEB617D647A6002C1B00 /* DIRAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DIRAppDelegate.m; sourceTree = "<group>"; };
 		E189AEB917D647A6002C1B00 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		E189AEC017D647BA002C1B00 /* OpenDirectory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenDirectory.framework; path = System/Library/Frameworks/OpenDirectory.framework; sourceTree = SDKROOT; };
+		E189AEC217D64F4B002C1B00 /* DIRDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DIRDataProvider.h; sourceTree = "<group>"; };
+		E189AEC317D64F4B002C1B00 /* DIRDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DIRDataProvider.m; sourceTree = "<group>"; };
+		E1B0536B17D77162006B2F77 /* DIRQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DIRQuery.h; sourceTree = "<group>"; };
+		E1B0536C17D77162006B2F77 /* DIRQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DIRQuery.m; sourceTree = "<group>"; };
+		E1EAEEB317DF0BF9006BE504 /* ODRecord+SmartDisplayName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ODRecord+SmartDisplayName.h"; sourceTree = "<group>"; };
+		E1EAEEB417DF0BF9006BE504 /* ODRecord+SmartDisplayName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ODRecord+SmartDisplayName.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E189AEC117D647BA002C1B00 /* OpenDirectory.framework in Frameworks */,
 				E189AEA417D647A6002C1B00 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -43,6 +68,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E127B63817D9E208004559EC /* DIRData */ = {
+			isa = PBXGroup;
+			children = (
+				E13A111517D786CE0056DD33 /* DIRDataHelper.h */,
+				E13A111617D786CE0056DD33 /* DIRDataHelper.m */,
+				E127B63917D9E216004559EC /* DIRDataViewController */,
+			);
+			name = DIRData;
+			sourceTree = "<group>";
+		};
+		E127B63917D9E216004559EC /* DIRDataViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E127B64017D9E2DB004559EC /* DIRDataViewController.h */,
+				E127B64117D9E2DB004559EC /* DIRDataViewController.m */,
+				E14E31C717DA26E000747C75 /* DIRDataViewController.xib */,
+				E127B63D17D9E263004559EC /* DIRDataViewControllerForHuman */,
+			);
+			name = DIRDataViewController;
+			sourceTree = "<group>";
+		};
+		E127B63D17D9E263004559EC /* DIRDataViewControllerForHuman */ = {
+			isa = PBXGroup;
+			children = (
+				E127B63A17D9E25E004559EC /* DIRDataViewControllerForHuman.h */,
+				E127B63B17D9E25E004559EC /* DIRDataViewControllerForHuman.m */,
+				E127B63E17D9E285004559EC /* DIRDataViewControllerForHuman.xib */,
+			);
+			name = DIRDataViewControllerForHuman;
+			sourceTree = "<group>";
+		};
 		E189AE9717D647A6002C1B00 = {
 			isa = PBXGroup;
 			children = (
@@ -63,6 +119,7 @@
 		E189AEA217D647A6002C1B00 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E189AEC017D647BA002C1B00 /* OpenDirectory.framework */,
 				E189AEA317D647A6002C1B00 /* Cocoa.framework */,
 				E189AEA517D647A6002C1B00 /* Other Frameworks */,
 			);
@@ -84,6 +141,8 @@
 			children = (
 				E189AEB517D647A6002C1B00 /* DIRAppDelegate.h */,
 				E189AEB617D647A6002C1B00 /* DIRAppDelegate.m */,
+				E127B63817D9E208004559EC /* DIRData */,
+				E1B0536A17D7714E006B2F77 /* OpenDirectory */,
 				E189AEB817D647A6002C1B00 /* MainMenu.xib */,
 				E189AEAA17D647A6002C1B00 /* Supporting Files */,
 			);
@@ -100,6 +159,19 @@
 				E189AEB217D647A6002C1B00 /* Credits.rtf */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E1B0536A17D7714E006B2F77 /* OpenDirectory */ = {
+			isa = PBXGroup;
+			children = (
+				E189AEC217D64F4B002C1B00 /* DIRDataProvider.h */,
+				E189AEC317D64F4B002C1B00 /* DIRDataProvider.m */,
+				E1B0536B17D77162006B2F77 /* DIRQuery.h */,
+				E1B0536C17D77162006B2F77 /* DIRQuery.m */,
+				E1EAEEB317DF0BF9006BE504 /* ODRecord+SmartDisplayName.h */,
+				E1EAEEB417DF0BF9006BE504 /* ODRecord+SmartDisplayName.m */,
+			);
+			name = OpenDirectory;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -157,6 +229,8 @@
 				E189AEAE17D647A6002C1B00 /* InfoPlist.strings in Resources */,
 				E189AEB417D647A6002C1B00 /* Credits.rtf in Resources */,
 				E189AEBA17D647A6002C1B00 /* MainMenu.xib in Resources */,
+				E127B63F17D9E285004559EC /* DIRDataViewControllerForHuman.xib in Resources */,
+				E14E31C817DA26E000747C75 /* DIRDataViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -169,6 +243,12 @@
 			files = (
 				E189AEB017D647A6002C1B00 /* main.m in Sources */,
 				E189AEB717D647A6002C1B00 /* DIRAppDelegate.m in Sources */,
+				E189AEC417D64F4B002C1B00 /* DIRDataProvider.m in Sources */,
+				E1B0536D17D77162006B2F77 /* DIRQuery.m in Sources */,
+				E13A111717D786CE0056DD33 /* DIRDataHelper.m in Sources */,
+				E127B63C17D9E25E004559EC /* DIRDataViewControllerForHuman.m in Sources */,
+				E127B64217D9E2DB004559EC /* DIRDataViewController.m in Sources */,
+				E1EAEEB517DF0BF9006BE504 /* ODRecord+SmartDisplayName.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,6 +382,7 @@
 				E189AEBF17D647A6002C1B00 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
