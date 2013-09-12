@@ -10,8 +10,10 @@
 		E127B63C17D9E25E004559EC /* DIRDataViewControllerForHuman.m in Sources */ = {isa = PBXBuildFile; fileRef = E127B63B17D9E25E004559EC /* DIRDataViewControllerForHuman.m */; };
 		E127B63F17D9E285004559EC /* DIRDataViewControllerForHuman.xib in Resources */ = {isa = PBXBuildFile; fileRef = E127B63E17D9E285004559EC /* DIRDataViewControllerForHuman.xib */; };
 		E127B64217D9E2DB004559EC /* DIRDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E127B64117D9E2DB004559EC /* DIRDataViewController.m */; };
-		E13A111717D786CE0056DD33 /* DIRDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E13A111617D786CE0056DD33 /* DIRDataHelper.m */; };
 		E14E31C817DA26E000747C75 /* DIRDataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E14E31C717DA26E000747C75 /* DIRDataViewController.xib */; };
+		E16E371317DF2AC8002EE246 /* AHMethodSwapper.m in Sources */ = {isa = PBXBuildFile; fileRef = E16E371217DF2AC8002EE246 /* AHMethodSwapper.m */; };
+		E16E371617DF32EC002EE246 /* DIRRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = E16E371517DF32EC002EE246 /* DIRRecord.m */; };
+		E16E371917DF3549002EE246 /* DIRHumanRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = E16E371817DF3549002EE246 /* DIRHumanRecord.m */; };
 		E189AEA417D647A6002C1B00 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E189AEA317D647A6002C1B00 /* Cocoa.framework */; };
 		E189AEAE17D647A6002C1B00 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E189AEAC17D647A6002C1B00 /* InfoPlist.strings */; };
 		E189AEB017D647A6002C1B00 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E189AEAF17D647A6002C1B00 /* main.m */; };
@@ -21,7 +23,6 @@
 		E189AEC117D647BA002C1B00 /* OpenDirectory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E189AEC017D647BA002C1B00 /* OpenDirectory.framework */; };
 		E189AEC417D64F4B002C1B00 /* DIRDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = E189AEC317D64F4B002C1B00 /* DIRDataProvider.m */; };
 		E1B0536D17D77162006B2F77 /* DIRQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B0536C17D77162006B2F77 /* DIRQuery.m */; };
-		E1EAEEB517DF0BF9006BE504 /* ODRecord+SmartDisplayName.m in Sources */ = {isa = PBXBuildFile; fileRef = E1EAEEB417DF0BF9006BE504 /* ODRecord+SmartDisplayName.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,9 +31,14 @@
 		E127B63E17D9E285004559EC /* DIRDataViewControllerForHuman.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DIRDataViewControllerForHuman.xib; sourceTree = "<group>"; };
 		E127B64017D9E2DB004559EC /* DIRDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DIRDataViewController.h; sourceTree = "<group>"; };
 		E127B64117D9E2DB004559EC /* DIRDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DIRDataViewController.m; sourceTree = "<group>"; };
-		E13A111517D786CE0056DD33 /* DIRDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DIRDataHelper.h; sourceTree = "<group>"; };
-		E13A111617D786CE0056DD33 /* DIRDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DIRDataHelper.m; sourceTree = "<group>"; };
 		E14E31C717DA26E000747C75 /* DIRDataViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DIRDataViewController.xib; sourceTree = "<group>"; };
+		E16E371117DF2AC8002EE246 /* AHMethodSwapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHMethodSwapper.h; sourceTree = "<group>"; };
+		E16E371217DF2AC8002EE246 /* AHMethodSwapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHMethodSwapper.m; sourceTree = "<group>"; };
+		E16E371417DF32EC002EE246 /* DIRRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DIRRecord.h; sourceTree = "<group>"; };
+		E16E371517DF32EC002EE246 /* DIRRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DIRRecord.m; sourceTree = "<group>"; };
+		E16E371717DF3548002EE246 /* DIRHumanRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DIRHumanRecord.h; sourceTree = "<group>"; };
+		E16E371817DF3549002EE246 /* DIRHumanRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DIRHumanRecord.m; sourceTree = "<group>"; };
+		E16E371A17DF379F002EE246 /* DIRRecord_Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DIRRecord_Private.h; sourceTree = "<group>"; };
 		E189AEA017D647A6002C1B00 /* Directory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Directory.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E189AEA317D647A6002C1B00 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		E189AEA617D647A6002C1B00 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -51,8 +57,6 @@
 		E189AEC317D64F4B002C1B00 /* DIRDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DIRDataProvider.m; sourceTree = "<group>"; };
 		E1B0536B17D77162006B2F77 /* DIRQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DIRQuery.h; sourceTree = "<group>"; };
 		E1B0536C17D77162006B2F77 /* DIRQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DIRQuery.m; sourceTree = "<group>"; };
-		E1EAEEB317DF0BF9006BE504 /* ODRecord+SmartDisplayName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ODRecord+SmartDisplayName.h"; sourceTree = "<group>"; };
-		E1EAEEB417DF0BF9006BE504 /* ODRecord+SmartDisplayName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ODRecord+SmartDisplayName.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,8 +75,6 @@
 		E127B63817D9E208004559EC /* DIRData */ = {
 			isa = PBXGroup;
 			children = (
-				E13A111517D786CE0056DD33 /* DIRDataHelper.h */,
-				E13A111617D786CE0056DD33 /* DIRDataHelper.m */,
 				E127B63917D9E216004559EC /* DIRDataViewController */,
 			);
 			name = DIRData;
@@ -99,9 +101,27 @@
 			name = DIRDataViewControllerForHuman;
 			sourceTree = "<group>";
 		};
+		E16E36D217DF29C9002EE246 /* Vendors */ = {
+			isa = PBXGroup;
+			children = (
+				E16E371017DF2AC8002EE246 /* AHMethodSwapper */,
+			);
+			path = Vendors;
+			sourceTree = "<group>";
+		};
+		E16E371017DF2AC8002EE246 /* AHMethodSwapper */ = {
+			isa = PBXGroup;
+			children = (
+				E16E371117DF2AC8002EE246 /* AHMethodSwapper.h */,
+				E16E371217DF2AC8002EE246 /* AHMethodSwapper.m */,
+			);
+			path = AHMethodSwapper;
+			sourceTree = "<group>";
+		};
 		E189AE9717D647A6002C1B00 = {
 			isa = PBXGroup;
 			children = (
+				E16E36D217DF29C9002EE246 /* Vendors */,
 				E189AEA917D647A6002C1B00 /* Directory */,
 				E189AEA217D647A6002C1B00 /* Frameworks */,
 				E189AEA117D647A6002C1B00 /* Products */,
@@ -168,8 +188,11 @@
 				E189AEC317D64F4B002C1B00 /* DIRDataProvider.m */,
 				E1B0536B17D77162006B2F77 /* DIRQuery.h */,
 				E1B0536C17D77162006B2F77 /* DIRQuery.m */,
-				E1EAEEB317DF0BF9006BE504 /* ODRecord+SmartDisplayName.h */,
-				E1EAEEB417DF0BF9006BE504 /* ODRecord+SmartDisplayName.m */,
+				E16E371417DF32EC002EE246 /* DIRRecord.h */,
+				E16E371517DF32EC002EE246 /* DIRRecord.m */,
+				E16E371A17DF379F002EE246 /* DIRRecord_Private.h */,
+				E16E371717DF3548002EE246 /* DIRHumanRecord.h */,
+				E16E371817DF3549002EE246 /* DIRHumanRecord.m */,
 			);
 			name = OpenDirectory;
 			sourceTree = "<group>";
@@ -201,7 +224,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = DIR;
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Yoann Gini";
 			};
 			buildConfigurationList = E189AE9B17D647A6002C1B00 /* Build configuration list for PBXProject "Directory" */;
@@ -245,10 +268,11 @@
 				E189AEB717D647A6002C1B00 /* DIRAppDelegate.m in Sources */,
 				E189AEC417D64F4B002C1B00 /* DIRDataProvider.m in Sources */,
 				E1B0536D17D77162006B2F77 /* DIRQuery.m in Sources */,
-				E13A111717D786CE0056DD33 /* DIRDataHelper.m in Sources */,
 				E127B63C17D9E25E004559EC /* DIRDataViewControllerForHuman.m in Sources */,
 				E127B64217D9E2DB004559EC /* DIRDataViewController.m in Sources */,
-				E1EAEEB517DF0BF9006BE504 /* ODRecord+SmartDisplayName.m in Sources */,
+				E16E371317DF2AC8002EE246 /* AHMethodSwapper.m in Sources */,
+				E16E371617DF32EC002EE246 /* DIRRecord.m in Sources */,
+				E16E371917DF3549002EE246 /* DIRHumanRecord.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,7 +310,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
@@ -318,7 +341,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_CONSTANT_CONVERSION = YES;

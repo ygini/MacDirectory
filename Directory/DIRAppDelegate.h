@@ -32,11 +32,7 @@
 - (IBAction)loginWindowOKAction:(id)sender;
 - (IBAction)loginWindowCancelAction:(id)sender;
 
-@property (assign) IBOutlet NSButton *detailSaveButton;
-@property (assign) IBOutlet NSButton *detailCancelButton;
-- (IBAction)detailSaveAction:(id)sender;
-- (IBAction)detailCancelAction:(id)sender;
-
 @property (retain) IBOutlet NSArray *finalList;
+@property (assign) IBOutlet NSArrayController *masterViewArrayController;
 
 @end

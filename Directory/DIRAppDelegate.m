@@ -9,11 +9,11 @@
 #import "DIRAppDelegate.h"
 
 #import "DIRDataProvider.h"
-#import "DIRDataHelper.h"
 
 #import <libkern/OSAtomic.h>
 
 #import "DIRDataViewController.h"
+#import "DIRRecord.h"
 
 typedef NS_ENUM(int, DIRDataType)
 {
@@ -34,12 +34,14 @@ typedef NS_ENUM(int, DIRDataType)
 }
 
 - (void)reloadData;
-- (void)reloadAuthenticationSate;
-- (void)reloadDetailViewForRecord:(ODRecord*)record;
+- (void)reloadAuthenticationState;
+- (void)reloadDetailViewForRecord:(DIRRecord*)record;
 
 - (ODRecordType)selectedODRecordType;
 
 - (void)authenticateWithLogin:(NSString*)login andPassword:(NSString*)password;
+
+-(void)masterSelectionDidChange;
 
 @end
 
@@ -47,8 +49,10 @@ typedef NS_ENUM(int, DIRDataType)
 
 -(void)applicationDidFinishLaunching:(NSNotification *)notification
 {
-	self.finalList = [NSArray array];
+//	[[NSUserDefaults standardUserDefaults] registerDefaults:@{@"NSConstraintBasedLayoutVisualizeMutuallyExclusiveConstraints": @YES}];
+	
 	[[DIRDataProvider sharedInstance] addObserver:self forKeyPath:@"authenticatedAs" options:0 context:NULL];
+	[self.masterViewArrayController addObserver:self forKeyPath:@"selectionIndexes" options:0 context:NULL];
 	
 	NSMenuItem *menuItem = nil;
 	for (NSString *source in [[DIRDataProvider sharedInstance] availableSources]) {
@@ -140,14 +144,6 @@ typedef NS_ENUM(int, DIRDataType)
 	[NSApp endSheet:self.loginWindow returnCode:NSCancelButton];
 }
 
-- (IBAction)detailSaveAction:(id)sender {
-	[_curentDataViewController saveAction];
-}
-
-- (IBAction)detailCancelAction:(id)sender {
-	[_curentDataViewController cancelAction];
-}
-
 #pragma mark Login
 
 - (void)sheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo
@@ -159,15 +155,16 @@ typedef NS_ENUM(int, DIRDataType)
 		[self authenticateWithLogin:self.loginWindowUserField.stringValue andPassword:self.loginWindowPasswordField.stringValue];
 	}
 	
-	[self reloadAuthenticationSate];
+	[self reloadAuthenticationState];
 	
-	if ([[[DIRDataProvider sharedInstance] authenticatedAs] isEqualToString:self.loginWindowUserField.stringValue]) {
-		self.loginWindowUserField.stringValue = @"";
-		self.loginWindowPasswordField.stringValue = @"";
+	if (![[[DIRDataProvider sharedInstance] authenticatedAs] isEqualToString:self.loginWindowUserField.stringValue] &&
+		NSOKButton == returnCode) {
+		[self showLoginPanelAction:self];
 	}
 	else
 	{
-		[self showLoginPanelAction:self];
+		self.loginWindowUserField.stringValue = @"";
+		self.loginWindowPasswordField.stringValue = @"";
 	}
 }
 
@@ -180,16 +177,16 @@ typedef NS_ENUM(int, DIRDataType)
 		return;
 	}
 	
+	self.finalList = [NSArray array];
+	
 	[[DIRDataProvider sharedInstance] allEntriesOfType:[self selectedODRecordType]
 										withQueryValue:[self.masterSearchField.stringValue length] > 0 ? self.masterSearchField.stringValue : nil
 										  andMatchType:kODMatchInsensitiveContains
 								 withCompletionHandler:^(NSArray *entries, NSError *error) {
 									 
-									 if (!error) {
-										 NSMutableArray *array = [[NSMutableArray alloc] initWithArray:self.finalList];
-										 [array addObjectsFromArray:entries];
-										 self.finalList = array;
-										 [array release];
+									 if (!error)
+									 {
+										 self.finalList = [self.finalList arrayByAddingObjectsFromArray:entries];
 									 }
 									 else
 									 {
@@ -198,7 +195,7 @@ typedef NS_ENUM(int, DIRDataType)
 								 }];
 }
 
-- (void)reloadAuthenticationSate
+- (void)reloadAuthenticationState
 {
 	NSString *authenticatedAs = [[DIRDataProvider sharedInstance] authenticatedAs];
 	if ([authenticatedAs length] > 0) {
@@ -210,10 +207,16 @@ typedef NS_ENUM(int, DIRDataType)
 		self.loginButton.image = [NSImage imageNamed:@"NSLockLockedTemplate"];
 		self.loginStateField.stringValue = @"";
 	}
-	[self reloadData];
+	
+//	NSIndexSet *indexes = self.masterViewArrayController.selectionIndexes;
+//	[self reloadData];
+	
+//	if (![self.masterViewArrayController.selectionIndexes isEqualToIndexSet:indexes]) {
+//		[self.masterViewArrayController setSelectionIndexes:indexes];
+//	}
 }
 
-- (void)reloadDetailViewForRecord:(ODRecord*)record
+- (void)reloadDetailViewForRecord:(DIRRecord*)record
 {
 	if (_curentDataViewController) {
 		[_curentDataViewController.view removeFromSuperview];
@@ -222,39 +225,74 @@ typedef NS_ENUM(int, DIRDataType)
 	
 	_curentDataViewController = [DIRDataViewController newDataViewControllerForRecord:record];
 
-	NSSize detailSuperviewSize = self.detailSuperview.frame.size;
-	NSSize detailViewSize = _curentDataViewController.view.frame.size;
-	
-	CGFloat wDiff = detailViewSize.width - detailSuperviewSize.width;
-	CGFloat hDiff = detailViewSize.height - detailSuperviewSize.height;
-	
-	NSRect windowFrame = self.window.frame;
-	
-	if (wDiff > 0)
-	{
-		windowFrame.size.width += wDiff;
+	if (_curentDataViewController) {
+		NSSize detailSuperviewSize = self.detailSuperview.frame.size;
+		NSSize detailViewSize = [_curentDataViewController minimumDisplaySize];
+		
+		CGFloat wDiff = detailViewSize.width - detailSuperviewSize.width;
+		CGFloat hDiff = detailViewSize.height - detailSuperviewSize.height;
+		
+		NSRect windowFrame = self.window.frame;
+		
+//		if (wDiff > 0)
+//		{
+			windowFrame.size.width += wDiff;
+//		}
+//		
+//		if (hDiff > 0) {
+			windowFrame.size.height += hDiff;
+//		}
+		
+		[self.window setFrame:windowFrame display:YES animate:YES];
+		[self.window setMinSize:windowFrame.size];
+		
+		[self.detailSuperview addSubview:_curentDataViewController.view];
+		
+		[self.detailSuperview addConstraint:[NSLayoutConstraint constraintWithItem:_curentDataViewController.view
+																		 attribute:NSLayoutAttributeLeading
+																		 relatedBy:NSLayoutRelationEqual
+																			toItem:self.detailSuperview
+																		 attribute:NSLayoutAttributeLeading
+																		multiplier:1
+																		  constant:0]];
+		[self.detailSuperview addConstraint:[NSLayoutConstraint constraintWithItem:_curentDataViewController.view
+																		 attribute:NSLayoutAttributeTrailing
+																		 relatedBy:NSLayoutRelationEqual
+																			toItem:self.detailSuperview
+																		 attribute:NSLayoutAttributeTrailing
+																		multiplier:1
+																		  constant:0]];
+		[self.detailSuperview addConstraint:[NSLayoutConstraint constraintWithItem:_curentDataViewController.view
+																		 attribute:NSLayoutAttributeTop
+																		 relatedBy:NSLayoutRelationEqual
+																			toItem:self.detailSuperview
+																		 attribute:NSLayoutAttributeTop
+																		multiplier:1
+																		  constant:0]];
+		[self.detailSuperview addConstraint:[NSLayoutConstraint constraintWithItem:_curentDataViewController.view
+																		 attribute:NSLayoutAttributeBottom
+																		 relatedBy:NSLayoutRelationEqual
+																			toItem:self.detailSuperview
+																		 attribute:NSLayoutAttributeBottom
+																		multiplier:1
+																		  constant:0]];
+		
+//		[self.detailSuperview addConstraint:[NSLayoutConstraint constraintWithItem:_curentDataViewController.view
+//																		 attribute:NSLayoutAttributeWidth
+//																		 relatedBy:NSLayoutRelationGreaterThanOrEqual
+//																			toItem:self.detailSuperview
+//																		 attribute:NSLayoutAttributeWidth
+//																		multiplier:1
+//																		  constant:detailViewSize.width]];
+//		
+//		[self.detailSuperview addConstraint:[NSLayoutConstraint constraintWithItem:_curentDataViewController.view
+//																		 attribute:NSLayoutAttributeHeight
+//																		 relatedBy:NSLayoutRelationGreaterThanOrEqual
+//																			toItem:self.detailSuperview
+//																		 attribute:NSLayoutAttributeHeight
+//																		multiplier:1
+//																		  constant:detailViewSize.height]];
 	}
-	
-	if (hDiff > 0) {
-		windowFrame.size.height += hDiff;
-	}
-	
-	[self.window setFrame:windowFrame display:YES animate:YES];
-	
-	[self.detailSuperview addSubview:_curentDataViewController.view];
-	
-	if (record)
-	{
-		[self.detailSaveButton setHidden:NO];
-		[self.detailCancelButton setHidden:NO];
-	}
-	else
-	{
-		[self.detailSaveButton setHidden:YES];
-		[self.detailCancelButton setHidden:YES];
-	}
-	
-	[_curentDataViewController reloadData];
 }
 
 #pragma mark Adaptors
@@ -278,14 +316,15 @@ typedef NS_ENUM(int, DIRDataType)
 
 #pragma mark TableView
 
--(void)tableViewSelectionDidChange:(NSNotification *)notification
+-(void)masterSelectionDidChange
 {
-	NSIndexSet *selectedRows = self.masterTableView.selectedRowIndexes;
-	if ([selectedRows count] == 0) {
+	NSArray *selectedObjects = self.masterViewArrayController.selectedObjects;
+
+	if ([selectedObjects count] == 0) {
 		[self reloadDetailViewForRecord:nil];
 	}
-	else if ([selectedRows count] == 1) {
-		ODRecord *selectedRecord = [_finalList objectAtIndex:[selectedRows lastIndex]];
+	else if ([selectedObjects count] == 1) {
+		DIRRecord *selectedRecord = [selectedObjects lastObject];
 		[self reloadDetailViewForRecord:selectedRecord];
 	}
 	else
@@ -298,9 +337,17 @@ typedef NS_ENUM(int, DIRDataType)
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-	if ([DIRDataProvider sharedInstance] == object) {
-		if ([@"authenticatedAs" isEqualToString:keyPath]) {
-			[self reloadAuthenticationSate];
+	if ([DIRDataProvider sharedInstance] == object)
+	{
+		if ([@"authenticatedAs" isEqualToString:keyPath])
+		{
+			[self reloadAuthenticationState];
+		}
+	}
+	else if (self.masterViewArrayController == object)
+	{
+		if ([@"selectionIndexes" isEqualToString:keyPath]) {
+			[self masterSelectionDidChange];
 		}
 	}
 }

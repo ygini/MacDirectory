@@ -8,21 +8,16 @@
 
 #import <Cocoa/Cocoa.h>
 
-#import <OpenDirectory/OpenDirectory.h>
+#import "DIRRecord.h"
 
 @interface DIRDataViewController : NSViewController
 
-@property (retain) ODRecord *record;
+@property (retain) IBOutlet DIRRecord *record;
 
 - (NSSize)minimumDisplaySize;
 
 + (void)registerClassName:(NSString *)className forRecordType:(NSString*)recordType;
 
-+ (instancetype)newDataViewControllerForRecord:(ODRecord*)record;
-
-- (void)saveAction;
-- (void)cancelAction;
-
-- (void)reloadData;
++ (instancetype)newDataViewControllerForRecord:(DIRRecord*)record;
 
 @end

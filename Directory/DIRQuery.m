@@ -7,6 +7,7 @@
 //
 
 #import "DIRQuery.h"
+#import "DIRRecord.h"
 
 @interface DIRQuery () <ODQueryDelegate>
 {
@@ -57,7 +58,13 @@
 
 -(void)query:(DIRQuery *)inQuery foundResults:(NSArray *)inResults error:(NSError *)inError
 {
-	_completionHandler(inQuery, inResults, inError);
+	NSMutableArray *results = [NSMutableArray arrayWithCapacity:[inResults count]];
+	
+	for (ODRecord *record in inResults) {
+		[results addObject:[DIRRecord recordWithODRecord:record]];
+	}
+	
+	_completionHandler(inQuery, results, inError);
 }
 
 @end

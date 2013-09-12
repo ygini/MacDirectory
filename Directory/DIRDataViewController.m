@@ -42,7 +42,7 @@ static NSMutableDictionary * DIRDataViewController_recordTypeToClassName = nil;
 	[DIRDataViewController_recordTypeToClassName setValue:className forKey:recordType];
 }
 
-+ (instancetype)newDataViewControllerForRecord:(ODRecord*)record
++ (instancetype)newDataViewControllerForRecord:(DIRRecord*)record
 {
 	DIRDataViewController *viewController = nil;
 	
@@ -71,21 +71,6 @@ static NSMutableDictionary * DIRDataViewController_recordTypeToClassName = nil;
 {
     [_record release], _record = nil;
     [super dealloc];
-}
-
-- (void)saveAction
-{
-	
-}
-
-- (void)cancelAction
-{
-	[self reloadData];
-}
-
-- (void)reloadData
-{
-	
 }
 
 @end
