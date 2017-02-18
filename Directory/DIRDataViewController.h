@@ -12,12 +12,13 @@
 
 @interface DIRDataViewController : NSViewController
 
-@property (retain) IBOutlet DIRRecord *record;
+@property IBOutlet DIRRecord *record;
 
 - (NSSize)minimumDisplaySize;
 
 + (void)registerClassName:(NSString *)className forRecordType:(NSString*)recordType;
 
 + (instancetype)newDataViewControllerForRecord:(DIRRecord*)record;
++ (instancetype)newDataViewControllerForRecordType:(NSString*)recordType;
 
 @end

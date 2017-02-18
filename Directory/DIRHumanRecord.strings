@@ -1,0 +1,10 @@
+/* 
+  DIRHumanRecord.strings
+  Directory
+
+  Created by Yoann Gini on 18/09/13.
+  Copyright (c) 2013 Yoann Gini. All rights reserved.
+*/
+"full_identity" = "%1$@ %2$@ %3$@ %4$@ %5$@";
+"fisrtname_lastname" = "%4$@ %6$@";
+"lastname_firstname" = "%6$@ %4$@";

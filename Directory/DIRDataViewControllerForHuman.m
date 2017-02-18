@@ -16,6 +16,8 @@
 
 @implementation DIRDataViewControllerForHuman
 
+@dynamic record;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -26,10 +28,6 @@
     return self;
 }
 
-- (void)dealloc
-{
-    [super dealloc];
-}
 
 -(NSSize)minimumDisplaySize
 {

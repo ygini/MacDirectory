@@ -22,8 +22,7 @@
 
 - (void)dealloc
 {
-    [_completionHandler release], _completionHandler = nil;
-    [super dealloc];
+    _completionHandler = nil;
 }
 
 #pragma mark Overriding

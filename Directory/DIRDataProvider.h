@@ -10,13 +10,15 @@
 
 #import <OpenDirectory/OpenDirectory.h>
 
+#import "DIRRecord.h"
+
 @interface DIRDataProvider : NSObject
 
 + (instancetype)sharedInstance;
 
 - (NSError*)authenticateWithUsername:(NSString*)username andPassword:(NSString*)password;
 
-@property (retain, readonly) NSString *authenticatedAs;
+@property (readonly) NSString *authenticatedAs;
 
 - (NSError*)forgetAuthentication;
 
@@ -27,5 +29,9 @@
 - (NSError*)setSelectedSource:(NSString *)selectedSource;
 
 - (void)allEntriesOfType:(ODRecordType)recordType withQueryValue:(NSString*)queryValue andMatchType:(ODMatchType)matchType withCompletionHandler:(void(^)(NSArray* entries, NSError* error))completionHandler;
+
+- (ODRecord*)addRecordOfType:(ODRecordType)recordType withName:(NSString*)name andAttributes:(NSDictionary*)attributes;
+
+- (void)deleteRecord:(ODRecord*)record;
 
 @end

@@ -11,7 +11,7 @@
 #import "DIRHumanRecord.h"
 
 @interface DIRRecord ()
-@property (retain) ODRecord *internalRecord;
+@property ODRecord *internalRecord;
 @end
 
 @implementation DIRRecord
@@ -27,14 +27,9 @@
 	}
 	DIRRecord *record = [FinalClass new];
 	record.internalRecord = odRecord;
-	return [record autorelease];
+	return record;
 }
 
-- (void)dealloc
-{
-    [_internalRecord release];
-    [super dealloc];
-}
 
 #pragma mark - Internal Record API
 
@@ -53,11 +48,62 @@
 	return object;
 }
 
-- (BOOL)setSimpleValue:(id)value ForAttribute:(ODAttributeType)attribute
+- (BOOL)setSimpleValue:(id)value forAttribute:(ODAttributeType)attribute
 {
 	NSError *err = nil;
 	if (value) {
 		[self.internalRecord setValue:[NSArray arrayWithObject:value]
+						 forAttribute:attribute
+								error:&err];
+	}
+	else
+	{
+		[self.internalRecord removeValuesForAttribute:attribute
+												error:&err];
+	}
+	
+	if (err)
+	{
+		[NSApp presentError:err];
+		return NO;
+	}
+	
+	return YES;
+}
+
+- (NSArray*)arrayValueForAttribute:(ODAttributeType)attribute
+{
+	NSError *err = nil;
+	id object = [NSMutableArray array];
+	
+	for (NSString *value in [self.internalRecord valuesForAttribute:attribute
+															  error:&err]) {
+		[object addObject:[NSMutableDictionary dictionaryWithObject:value forKey:@"value"]];
+	}
+	
+	if (err)
+	{
+		NSLog(@"Unable to retrive %@ from %@:\n%@", attribute, self.internalRecord.recordName, err);
+	}
+	
+	return object;
+}
+
+- (BOOL)setArrayValue:(NSArray*)value forAttribute:(ODAttributeType)attribute
+{
+	NSError *err = nil;
+	if (value) {
+		NSMutableArray *finalValues = [NSMutableArray array];
+		NSString *val = nil;
+		for (NSDictionary *dict in value) {
+			val = [dict valueForKey:@"value"];
+			if (!val) {
+				val = @"";
+			}
+			[finalValues addObject:val];
+		}
+		
+		[self.internalRecord setValue:finalValues
 						 forAttribute:attribute
 								error:&err];
 	}

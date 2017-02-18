@@ -8,6 +8,7 @@
 
 #import "DIRDataProvider.h"
 
+#import "DIRRecord_Private.h"
 #import "DIRQuery.h"
 
 @interface DIRDataProvider ()
@@ -15,7 +16,7 @@
 	ODNode *_selectedNode;
 }
 
-@property (retain, readwrite) NSString *authenticatedAs;
+@property (readwrite) NSString *authenticatedAs;
 
 @end
 
@@ -79,12 +80,10 @@
 - (NSError*)setSelectedSource:(NSString *)selectedSource
 {
 	NSError *err = nil;
-	id oldV = _selectedNode;
 	self.authenticatedAs = nil;
 	_selectedNode = [[ODNode alloc] initWithSession:[ODSession defaultSession]
 											   name:selectedSource
 											  error:&err];
-	[oldV release];
 	return err;
 }
 
@@ -109,6 +108,25 @@
 			completionHandler(nil, inError);
 		}
 	}];
+}
+
+- (ODRecord*)addRecordOfType:(ODRecordType)recordType withName:(NSString*)name andAttributes:(NSDictionary*)attributes
+{
+	NSError *error = nil;
+	ODRecord *record = [_selectedNode createRecordWithRecordType:recordType name:name attributes:attributes error:&error];
+	if (error) {
+		[NSApp presentError:error];
+	}
+	return record;
+}
+
+- (void)deleteRecord:(DIRRecord*)record
+{
+	NSError *error = nil;
+	[record.internalRecord deleteRecordAndReturnError:&error];
+	if (error) {
+		[NSApp presentError:error];
+	}
 }
 
 @end

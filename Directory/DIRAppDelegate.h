@@ -10,29 +10,31 @@
 
 @interface DIRAppDelegate : NSObject <NSApplicationDelegate>
 
-@property (assign) IBOutlet NSWindow *window;
-@property (assign) IBOutlet NSTableView *masterTableView;
-@property (assign) IBOutlet NSView *detailSuperview;
+@property IBOutlet NSWindow *window;
+@property IBOutlet NSTableView *masterTableView;
+@property IBOutlet NSView *detailSuperview;
 
-@property (assign) IBOutlet NSPopUpButton *sourcePopUpButton;
+@property IBOutlet NSPopUpButton *sourcePopUpButton;
 - (IBAction)selectedSourceHasChanged:(id)sender;
 
-@property (assign) IBOutlet NSSegmentedControl *dataTypeSegmentedControl;
+@property IBOutlet NSSegmentedControl *dataTypeSegmentedControl;
 - (IBAction)selectedDataTypeHasChanged:(id)sender;
 
-@property (assign) IBOutlet NSSearchField *masterSearchField;
+@property IBOutlet NSSearchField *masterSearchField;
 - (IBAction)masterSearchFieldDidChange:(id)sender;
 
-@property (assign) IBOutlet NSButton *loginButton;
-@property (assign) IBOutlet NSWindow *loginWindow;
-@property (assign) IBOutlet NSTextField *loginWindowUserField;
-@property (assign) IBOutlet NSSecureTextField *loginWindowPasswordField;
-@property (assign) IBOutlet NSTextField *loginStateField;
+@property IBOutlet NSButton *loginButton;
+@property IBOutlet NSWindow *loginWindow;
+@property IBOutlet NSTextField *loginWindowUserField;
+@property IBOutlet NSSecureTextField *loginWindowPasswordField;
+@property IBOutlet NSTextField *loginStateField;
 - (IBAction)showLoginPanelAction:(id)sender;
 - (IBAction)loginWindowOKAction:(id)sender;
 - (IBAction)loginWindowCancelAction:(id)sender;
 
-@property (retain) IBOutlet NSArray *finalList;
-@property (assign) IBOutlet NSArrayController *masterViewArrayController;
+@property IBOutlet NSArray *finalList;
+@property IBOutlet NSArrayController *masterViewArrayController;
 
+- (IBAction)addNodeAction:(id)sender;
+- (IBAction)removeNodeAction:(id)sender;
 @end

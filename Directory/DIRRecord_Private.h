@@ -13,6 +13,9 @@
 @property (readonly) ODRecord *internalRecord;
 
 - (id)simpleValueForAttribute:(ODAttributeType)attribute;
-- (BOOL)setSimpleValue:(id)value ForAttribute:(ODAttributeType)attribute;
+- (BOOL)setSimpleValue:(id)value forAttribute:(ODAttributeType)attribute;
+
+- (NSArray*)arrayValueForAttribute:(ODAttributeType)attribute;
+- (BOOL)setArrayValue:(NSArray*)value forAttribute:(ODAttributeType)attribute;
 
 @end

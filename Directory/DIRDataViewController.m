@@ -44,20 +44,29 @@ static NSMutableDictionary * DIRDataViewController_recordTypeToClassName = nil;
 
 + (instancetype)newDataViewControllerForRecord:(DIRRecord*)record
 {
+	DIRDataViewController *viewController = [self newDataViewControllerForRecordType:record.recordType];
+	viewController.record = record;
+	return viewController;
+}
+
++ (instancetype)newDataViewControllerForRecordType:(NSString*)recordType
+{
 	DIRDataViewController *viewController = nil;
-	
-	NSString *className = [DIRDataViewController_recordTypeToClassName valueForKey:record.recordType];
-	
-	if (className)
-	{
-		Class TargetClass = NSClassFromString(className);
-		viewController = [[TargetClass alloc] initWithNibName:className bundle:[NSBundle bundleForClass:TargetClass]];
-		viewController.record = record;
-	}
-	else
-	{
-		NSLog(@"No data view controller registred for record type %@", record.recordType);
-		viewController = [[DIRDataViewController alloc] initWithNibName:@"DIRDataViewController" bundle:nil];
+
+	if (recordType) {
+		NSString *className = [DIRDataViewController_recordTypeToClassName valueForKey:recordType];
+		
+		if (className)
+		{
+			Class TargetClass = NSClassFromString(className);
+			viewController = [[TargetClass alloc] initWithNibName:className bundle:[NSBundle bundleForClass:TargetClass]];
+		}
+		else
+		{
+			NSLog(@"No data view controller registred for record type %@", recordType);
+			viewController = [[DIRDataViewController alloc] initWithNibName:@"DIRDataViewController" bundle:nil];
+		}
+
 	}
 	return viewController;
 }
@@ -69,8 +78,7 @@ static NSMutableDictionary * DIRDataViewController_recordTypeToClassName = nil;
 
 - (void)dealloc
 {
-    [_record release], _record = nil;
-    [super dealloc];
+    _record = nil;
 }
 
 @end

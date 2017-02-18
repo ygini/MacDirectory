@@ -649,7 +649,6 @@
         </menu>
         <window title="Directory" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="371">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" unifiedTitleAndToolbar="YES"/>
-            <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
             <rect key="contentRect" x="335" y="390" width="707" height="451"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1178"/>
             <value key="minSize" type="size" width="705" height="400"/>
@@ -794,7 +793,7 @@
                     <constraint firstItem="732" firstAttribute="leading" secondItem="372" secondAttribute="leading" id="xgh-Wo-IoO"/>
                 </constraints>
             </view>
-            <toolbar key="toolbar" implicitIdentifier="DBAD196E-5B21-435F-A6D3-9B9E4E8A1D76" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="545">
+            <toolbar key="toolbar" implicitIdentifier="DBAD196E-5B21-435F-A6D3-9B9E4E8A1D76" autosavesConfiguration="NO" allowsUserCustomization="NO" displayMode="iconOnly" sizeMode="small" id="545">
                 <allowedToolbarItems>
                     <toolbarItem implicitItemIdentifier="BC2BF654-ABBB-469D-9615-6C9D981C2F2A" label="Directory Node" paletteLabel="Directory Node" id="557">
                         <nil key="toolTip"/>
@@ -812,6 +811,38 @@
                                 <action selector="selectedSourceHasChanged:" target="494" id="610"/>
                             </connections>
                         </popUpButton>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="8C4B5E1C-6089-4D87-8126-FFCCD39CA75F" label="Remove node" paletteLabel="Remove node" id="ctx-iO-LfB">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="82" height="32"/>
+                        <size key="maxSize" width="114" height="54"/>
+                        <button key="view" verticalHuggingPriority="750" id="qmG-hX-aMW">
+                            <rect key="frame" x="0.0" y="14" width="102" height="43"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="push" title="Remove" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Vct-5p-Kuy">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="removeNodeAction:" target="494" id="aCt-LH-F2J"/>
+                            </connections>
+                        </button>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="8CB84E6A-8783-4BBF-ACCA-92D13C897976" label="Add node" paletteLabel="Add node" id="opD-dy-Qnf">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="78" height="32"/>
+                        <size key="maxSize" width="82" height="43"/>
+                        <button key="view" verticalHuggingPriority="750" id="xQm-kl-CpL">
+                            <rect key="frame" x="0.0" y="14" width="78" height="43"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="push" title="Add" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3CI-Eu-hby">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="addNodeAction:" target="494" id="2fI-ko-rwm"/>
+                            </connections>
+                        </button>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="CCF4758C-0C11-48E8-AA57-5F9240C170AA" label="Data type" paletteLabel="Data type" id="637">
                         <nil key="toolTip"/>
@@ -838,6 +869,8 @@
                 <defaultToolbarItems>
                     <toolbarItem reference="557"/>
                     <toolbarItem reference="549"/>
+                    <toolbarItem reference="ctx-iO-LfB"/>
+                    <toolbarItem reference="opD-dy-Qnf"/>
                     <toolbarItem reference="637"/>
                 </defaultToolbarItems>
             </toolbar>

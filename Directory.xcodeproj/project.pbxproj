@@ -11,7 +11,7 @@
 		E127B63F17D9E285004559EC /* DIRDataViewControllerForHuman.xib in Resources */ = {isa = PBXBuildFile; fileRef = E127B63E17D9E285004559EC /* DIRDataViewControllerForHuman.xib */; };
 		E127B64217D9E2DB004559EC /* DIRDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E127B64117D9E2DB004559EC /* DIRDataViewController.m */; };
 		E14E31C817DA26E000747C75 /* DIRDataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E14E31C717DA26E000747C75 /* DIRDataViewController.xib */; };
-		E16E371317DF2AC8002EE246 /* AHMethodSwapper.m in Sources */ = {isa = PBXBuildFile; fileRef = E16E371217DF2AC8002EE246 /* AHMethodSwapper.m */; };
+		E153B94A17E9FA2900883365 /* DIRHumanRecord.strings in Resources */ = {isa = PBXBuildFile; fileRef = E153B94917E9FA2900883365 /* DIRHumanRecord.strings */; };
 		E16E371617DF32EC002EE246 /* DIRRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = E16E371517DF32EC002EE246 /* DIRRecord.m */; };
 		E16E371917DF3549002EE246 /* DIRHumanRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = E16E371817DF3549002EE246 /* DIRHumanRecord.m */; };
 		E189AEA417D647A6002C1B00 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E189AEA317D647A6002C1B00 /* Cocoa.framework */; };
@@ -32,8 +32,7 @@
 		E127B64017D9E2DB004559EC /* DIRDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DIRDataViewController.h; sourceTree = "<group>"; };
 		E127B64117D9E2DB004559EC /* DIRDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DIRDataViewController.m; sourceTree = "<group>"; };
 		E14E31C717DA26E000747C75 /* DIRDataViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DIRDataViewController.xib; sourceTree = "<group>"; };
-		E16E371117DF2AC8002EE246 /* AHMethodSwapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHMethodSwapper.h; sourceTree = "<group>"; };
-		E16E371217DF2AC8002EE246 /* AHMethodSwapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHMethodSwapper.m; sourceTree = "<group>"; };
+		E153B94917E9FA2900883365 /* DIRHumanRecord.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = DIRHumanRecord.strings; sourceTree = "<group>"; };
 		E16E371417DF32EC002EE246 /* DIRRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DIRRecord.h; sourceTree = "<group>"; };
 		E16E371517DF32EC002EE246 /* DIRRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DIRRecord.m; sourceTree = "<group>"; };
 		E16E371717DF3548002EE246 /* DIRHumanRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DIRHumanRecord.h; sourceTree = "<group>"; };
@@ -101,27 +100,9 @@
 			name = DIRDataViewControllerForHuman;
 			sourceTree = "<group>";
 		};
-		E16E36D217DF29C9002EE246 /* Vendors */ = {
-			isa = PBXGroup;
-			children = (
-				E16E371017DF2AC8002EE246 /* AHMethodSwapper */,
-			);
-			path = Vendors;
-			sourceTree = "<group>";
-		};
-		E16E371017DF2AC8002EE246 /* AHMethodSwapper */ = {
-			isa = PBXGroup;
-			children = (
-				E16E371117DF2AC8002EE246 /* AHMethodSwapper.h */,
-				E16E371217DF2AC8002EE246 /* AHMethodSwapper.m */,
-			);
-			path = AHMethodSwapper;
-			sourceTree = "<group>";
-		};
 		E189AE9717D647A6002C1B00 = {
 			isa = PBXGroup;
 			children = (
-				E16E36D217DF29C9002EE246 /* Vendors */,
 				E189AEA917D647A6002C1B00 /* Directory */,
 				E189AEA217D647A6002C1B00 /* Frameworks */,
 				E189AEA117D647A6002C1B00 /* Products */,
@@ -193,6 +174,7 @@
 				E16E371A17DF379F002EE246 /* DIRRecord_Private.h */,
 				E16E371717DF3548002EE246 /* DIRHumanRecord.h */,
 				E16E371817DF3549002EE246 /* DIRHumanRecord.m */,
+				E153B94917E9FA2900883365 /* DIRHumanRecord.strings */,
 			);
 			name = OpenDirectory;
 			sourceTree = "<group>";
@@ -224,7 +206,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = DIR;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "Yoann Gini";
 			};
 			buildConfigurationList = E189AE9B17D647A6002C1B00 /* Build configuration list for PBXProject "Directory" */;
@@ -254,6 +236,7 @@
 				E189AEBA17D647A6002C1B00 /* MainMenu.xib in Resources */,
 				E127B63F17D9E285004559EC /* DIRDataViewControllerForHuman.xib in Resources */,
 				E14E31C817DA26E000747C75 /* DIRDataViewController.xib in Resources */,
+				E153B94A17E9FA2900883365 /* DIRHumanRecord.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,7 +253,6 @@
 				E1B0536D17D77162006B2F77 /* DIRQuery.m in Sources */,
 				E127B63C17D9E25E004559EC /* DIRDataViewControllerForHuman.m in Sources */,
 				E127B64217D9E2DB004559EC /* DIRDataViewController.m in Sources */,
-				E16E371317DF2AC8002EE246 /* AHMethodSwapper.m in Sources */,
 				E16E371617DF32EC002EE246 /* DIRRecord.m in Sources */,
 				E16E371917DF3549002EE246 /* DIRHumanRecord.m in Sources */,
 			);
@@ -318,6 +300,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -364,10 +347,12 @@
 		E189AEBE17D647A6002C1B00 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Directory/Directory-Prefix.pch";
 				INFOPLIST_FILE = "Directory/Directory-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "me.gini.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -376,10 +361,12 @@
 		E189AEBF17D647A6002C1B00 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Directory/Directory-Prefix.pch";
 				INFOPLIST_FILE = "Directory/Directory-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "me.gini.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

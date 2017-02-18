@@ -61,7 +61,6 @@ typedef NS_ENUM(int, DIRDataType)
 									   keyEquivalent:@""];
 		[menuItem setTarget:self];
 		[self.sourcePopUpButton.menu addItem:menuItem];
-		[menuItem release];
 	}
 	
 	[self.sourcePopUpButton selectItemAtIndex:0];
@@ -78,8 +77,7 @@ typedef NS_ENUM(int, DIRDataType)
 - (void)dealloc
 {
 	[[DIRDataProvider sharedInstance] removeObserver:self forKeyPath:@"authenticatedAs"];
-	[_finalList release], _finalList = nil;
-    [super dealloc];
+	_finalList = nil;
 }
 
 #pragma mark Actions
@@ -144,6 +142,20 @@ typedef NS_ENUM(int, DIRDataType)
 	[NSApp endSheet:self.loginWindow returnCode:NSCancelButton];
 }
 
+
+- (IBAction)addNodeAction:(id)sender {
+	ODRecord *record = [[DIRDataProvider sharedInstance] addRecordOfType:self.selectedODRecordType withName:[[NSUUID UUID] UUIDString] andAttributes:nil];
+	[self reloadDataAndSelectRecordWithSelectionHandler:^BOOL(DIRRecord *evaluatedObject, NSDictionary *bindings) {
+		return [evaluatedObject.recordName isEqualToString:record.recordName];
+	}];
+}
+
+
+- (IBAction)removeNodeAction:(id)sender {
+	[[DIRDataProvider sharedInstance] deleteRecord:[self.masterViewArrayController.selectedObjects lastObject]];
+	[self reloadData];
+}
+
 #pragma mark Login
 
 - (void)sheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo
@@ -173,6 +185,12 @@ typedef NS_ENUM(int, DIRDataType)
 
 - (void)reloadData
 {
+	return [self reloadDataAndSelectRecordWithSelectionHandler:nil];
+}
+
+
+- (void)reloadDataAndSelectRecordWithSelectionHandler:(BOOL(^)(DIRRecord *evaluatedObject, NSDictionary *bindings))selectionHandler;
+{
 	if (!_applicationIsReady) {
 		return;
 	}
@@ -187,6 +205,10 @@ typedef NS_ENUM(int, DIRDataType)
 									 if (!error)
 									 {
 										 self.finalList = [self.finalList arrayByAddingObjectsFromArray:entries];
+										 if (selectionHandler) {
+											 NSArray *selection = [entries filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:selectionHandler]];
+											 [self.masterViewArrayController addSelectedObjects:selection];
+										 }
 									 }
 									 else
 									 {
@@ -207,20 +229,12 @@ typedef NS_ENUM(int, DIRDataType)
 		self.loginButton.image = [NSImage imageNamed:@"NSLockLockedTemplate"];
 		self.loginStateField.stringValue = @"";
 	}
-	
-//	NSIndexSet *indexes = self.masterViewArrayController.selectionIndexes;
-//	[self reloadData];
-	
-//	if (![self.masterViewArrayController.selectionIndexes isEqualToIndexSet:indexes]) {
-//		[self.masterViewArrayController setSelectionIndexes:indexes];
-//	}
 }
 
 - (void)reloadDetailViewForRecord:(DIRRecord*)record
 {
 	if (_curentDataViewController) {
 		[_curentDataViewController.view removeFromSuperview];
-		[_curentDataViewController release];
 	}
 	
 	_curentDataViewController = [DIRDataViewController newDataViewControllerForRecord:record];
@@ -234,14 +248,9 @@ typedef NS_ENUM(int, DIRDataType)
 		
 		NSRect windowFrame = self.window.frame;
 		
-//		if (wDiff > 0)
-//		{
-			windowFrame.size.width += wDiff;
-//		}
-//		
-//		if (hDiff > 0) {
-			windowFrame.size.height += hDiff;
-//		}
+		windowFrame.size.width += wDiff;
+		
+		windowFrame.size.height += hDiff;
 		
 		[self.window setFrame:windowFrame display:YES animate:YES];
 		[self.window setMinSize:windowFrame.size];
@@ -362,5 +371,4 @@ typedef NS_ENUM(int, DIRDataType)
 		NSLog(@"Authentication error %@", error);
 	}
 }
-
 @end

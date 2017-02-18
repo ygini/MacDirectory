@@ -13,6 +13,6 @@
 
 @interface DIRDataViewControllerForHuman : DIRDataViewController
 
-@property (retain) IBOutlet DIRHumanRecord *record;
+@property IBOutlet DIRHumanRecord *record;
 
 @end

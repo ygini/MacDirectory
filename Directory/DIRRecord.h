@@ -14,8 +14,8 @@
 
 + (instancetype)recordWithODRecord:(ODRecord*)odRecord;
 
-@property (readonly, nonatomic, retain) IBOutlet NSString *smartDisplayName;
-@property (readonly, nonatomic, retain) IBOutlet NSString *recordName;
-@property (readonly, nonatomic, retain) IBOutlet NSString *recordType;
+@property (readonly, nonatomic) IBOutlet NSString *smartDisplayName;
+@property (readonly, nonatomic) IBOutlet NSString *recordName;
+@property (readonly, nonatomic) IBOutlet NSString *recordType;
 
 @end
